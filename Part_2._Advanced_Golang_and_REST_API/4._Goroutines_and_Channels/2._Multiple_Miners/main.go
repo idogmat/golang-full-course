@@ -25,7 +25,8 @@ func mine(transferPoint chan int, n int) {
 // main горутина
 func main() {
 	coal := 0
-	transferPoint := make(chan int)
+	// transferPoint := make(chan int) // unbuffered channel (blocks until read)
+	transferPoint := make(chan int, 3) // buffer channel (took info and goroutines can be closed)
 
 	// Засекаем время
 	initTime := time.Now()
@@ -35,6 +36,9 @@ func main() {
 	go mine(transferPoint, 2)
 	go mine(transferPoint, 3)
 
+	// fmt.Println("chan:", transferPoint)     // печатает тип/адрес канала
+	// fmt.Println("len:", len(transferPoint)) // сколько элементов сейчас в очереди
+	// fmt.Println("cap:", cap(transferPoint)) // ёмкость (0 для небуферизованного)
 	// 3 раза приходим в пункт передачи угля за углём (3 раза читаем из канала)
 	coal += <-transferPoint
 	coal += <-transferPoint

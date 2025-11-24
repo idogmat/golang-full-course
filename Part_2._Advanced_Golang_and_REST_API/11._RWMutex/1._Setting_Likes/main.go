@@ -52,6 +52,6 @@ func main() {
 	}
 
 	wg.Wait()
-
+	fmt.Println("Likes:", likes)
 	fmt.Println("Время выполнения:", time.Since(initTime))
 }

@@ -9,6 +9,18 @@ func main() {
 }
 
 func foo1() {
+	test := map[string]int{
+		"Иван":  3,
+		"Сергей": 4,
+		"Данил": 1,
+	}
+	c, exist := test["loh"] // проверяем наличие ключа забираем значение и проверяем наличие
+	fmt.Println("check has value:", c, exist) // false
+
+	for key, value := range test {
+		fmt.Println("key:", key, ", value:", value)
+	}
+
 	weather := map[int]int{
 		10: +3,
 		11: -4,

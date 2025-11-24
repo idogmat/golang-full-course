@@ -11,7 +11,7 @@ import (
 func Miner(
 	ctx context.Context,
 	wg *sync.WaitGroup,
-	transferPoint chan<- int,
+	transferPoint chan<- int, // transferPoint chan <- int - send only | transferPoint chan for send and get
 	n int,
 	power int,
 ) {

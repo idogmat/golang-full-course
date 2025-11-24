@@ -19,10 +19,20 @@ import (
 // вот список команд!
 
 // выйти
-
+func removeItem(list []string, target string) ([]string, bool) {
+    for i, item := range list {
+        if item == target {
+            if i == len(list)-1 {
+                return list[:i], true
+            }
+            return append(list[:i], list[i+1:]...), true
+        }
+    }
+    return list, false
+}
 func main() {
+	list := make([]string, 0, 10)
 	scanner := bufio.NewScanner(os.Stdin)
-
 	for {
 		fmt.Print("Введите команду: ")
 
@@ -56,7 +66,7 @@ func main() {
 					str += " "
 				}
 			}
-
+			list = append(list, str)
 			fmt.Println("вы хотите добавить:", str)
 			fmt.Println("")
 		} else if cmd == "удалить" {
@@ -68,9 +78,19 @@ func main() {
 					str += " "
 				}
 			}
-
-			fmt.Println("вы кажется хотите удалить:", str)
+			result := false
+			list, result = removeItem(list, str)
+		
+			if result {
+					fmt.Printf("Элемент '%s' успешно удален из списка\n", str)
+			} else {
+					fmt.Printf("Элемент '%s' не найден в списке\n", str)
+			}
 			fmt.Println("")
+		} else if cmd == "покажи" {
+			fmt.Println("Команда: показать")
+			fmt.Println("-- эта команда выводит текущее состояние списка")
+			fmt.Println(list)
 		} else if cmd == "help" {
 			fmt.Println("Команда: help")
 			fmt.Println("-- эта команда выводит список доступных команд")

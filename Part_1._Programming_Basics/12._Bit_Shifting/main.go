@@ -3,29 +3,29 @@ package main
 import "fmt"
 
 func main() {
-    x := 5 // Двоичное: 00000101
+    x := 5
+    fmt.Printf("x = %d в двоичном виде: %08b\n", x, x) // %08b дополнит нулями до 8 бит
 
-    // 5 << 1: Умножение на 2¹ (на 2)
-    result1 := x << 1 // 10 (Двоичное: 00001010)
-    fmt.Printf("5 << 1 = %d\n", result1) // 10
+    // Сдвиг влево
+    result1 := x << 1
+    fmt.Printf("5 << 1 = %d в двоичном виде: %08b\n", result1, result1)
 
-    result11 := x << 2 // 20 (Двоичное: 00010100)
-    fmt.Printf("5 << 2 = %d\n", result11) // 20
+    result11 := x << 2
+    fmt.Printf("5 << 2 = %d в двоичном виде: %08b\n", result11, result11)
 
-    // 5 << 3: Умножение на 2³ (на 8)
-    result2 := x << 3 // 40 (Двоичное: 00101000)
-    fmt.Printf("5 << 3 = %d\n", result2) // 40
+    result2 := x << 3
+    fmt.Printf("5 << 3 = %d в двоичном виде: %08b\n", result2, result2)
 
-		y := 80 // Двоичное: 01010000
+    y := 80
+    fmt.Printf("\ny = %d в двоичном виде: %08b\n", y, y)
 
-    // 80 >> 1: Деление на 2¹ (на 2)
-    result3 := y >> 1 // 40 (Двоичное: 00101000)
-    fmt.Printf("80 >> 1 = %d\n", result3) // 40
+    // Сдвиг вправо
+    result3 := y >> 1
+    fmt.Printf("80 >> 1 = %d в двоичном виде: %08b\n", result3, result3)
 
-    result33 := y >> 2 // 20 (Двоичное: 00010100)
-    fmt.Printf("80 >> 2 = %d\n", result33) // 20
+    result33 := y >> 2
+    fmt.Printf("80 >> 2 = %d в двоичном виде: %08b\n", result33, result33)
 
-    // 80 >> 4: Деление на 2⁴ (на 16)
-    result4 := y >> 4 // 5 (Двоичное: 00000101)
-    fmt.Printf("80 >> 4 = %d\n", result4) // 5
+    result4 := y >> 4
+    fmt.Printf("80 >> 4 = %d в двоичном виде: %08b\n", result4, result4)
 }

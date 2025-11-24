@@ -27,7 +27,7 @@ func main() {
 	}()
 
 	// panicSlice()
-	// panicDivision()
+	panicDivision()
 
 	fmt.Println("Конец выполнения программы!")
 }

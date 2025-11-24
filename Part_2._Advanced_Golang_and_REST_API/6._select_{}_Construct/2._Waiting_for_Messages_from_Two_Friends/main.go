@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -39,15 +40,28 @@ func main() {
 			time.Sleep(250 * time.Millisecond)
 		}
 	}()
-
+	m1, m2 := false, false
 	// Бесконечное количество раз
 	for {
 		// Ожидаем сообщение от одного из каналов
 		select {
 		case msg1 := <-messageChan1:
 			fmt.Println("Я получил сообщение от:", msg1.Author, "Текст сообщения:", msg1.Text)
+			m1 = true
 		case msg2 := <-messageChan2:
 			fmt.Println("Я получил сообщение от:", msg2.Author, "Текст сообщения:", msg2.Text)
+			m2 = true
+		default:
+			{
+				if m1 && m2 {
+					fmt.Println("Все сообщения получены")
+					// break
+					close(messageChan1)
+					close(messageChan2)
+					os.Exit(0)
+				}
+				fmt.Println("Нет сообщений")
+			}
 		}
 	}
 }

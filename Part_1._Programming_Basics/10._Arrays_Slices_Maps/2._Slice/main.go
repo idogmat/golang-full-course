@@ -63,7 +63,10 @@ func foo1() {
 }
 
 func foo2() {
-	slice2 := make([]User, 5)
+	slice2 := make([]User, 0, 5) // создаем слайс с начальной емкостью 5
+	pp.Println("slice2 options length:", len(slice2), " cap(slice2):", cap(slice2))
+	slice2 = make([]User, 5) // создаем слайс с 5 элементами с дефолтными значениями
+	pp.Println("slice2 options length:", len(slice2), " cap(slice2):", cap(slice2))
 	pp.Println("slice2:", slice2)
 }
 
