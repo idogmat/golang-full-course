@@ -54,7 +54,7 @@ func main() {
 
 		for v := range coalTransferPoint {
 			coal.Add(int64(v))
-			time.Sleep(1 * time.Second)
+			// time.Sleep(1 * time.Second)
 		}
 	}()
 
@@ -68,7 +68,7 @@ func main() {
 			mails = append(mails, v)
 			mtx.Unlock()
 
-			time.Sleep(1 * time.Second)
+			// time.Sleep(1 * time.Second)
 		}
 	}()
 

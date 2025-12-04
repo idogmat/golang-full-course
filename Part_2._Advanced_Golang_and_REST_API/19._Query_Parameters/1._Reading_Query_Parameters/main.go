@@ -8,7 +8,9 @@ import (
 func handler(w http.ResponseWriter, r *http.Request) {
 	fooParam := r.URL.Query().Get("foo")
 	booParam := r.URL.Query().Get("boo")
+	allParams := r.URL.Query()
 
+	fmt.Println("Все параметры запроса:", allParams)
 	fmt.Println("foo параметр:", fooParam)
 	fmt.Println("boo параметр:", booParam)
 }

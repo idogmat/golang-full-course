@@ -55,6 +55,11 @@ func payHandler(w http.ResponseWriter, r *http.Request) {
 	mtx.Lock()
 	if money-payment.USD >= 0 {
 		money -= payment.USD
+	} else {
+		fmt.Println("Недостаточно средств для проведения оплаты!")
+		w.WriteHeader(http.StatusPaymentRequired)
+		mtx.Unlock()
+		return
 	}
 
 	paymentHistory = append(paymentHistory, payment)
